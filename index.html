@@ -87,7 +87,7 @@
 
 -->
 <div id="impress" data-transition-duration=450>
-    <div id="intro" class="step title" data-x="-1000" data-y="-1500" data-scale="1">
+    <div id="intro" class="step title" data-x="-20000" data-y="-1500" data-scale="1">
         <q>
             <h1>DREAM</h1>
             <span class="hashes">///////////////////////////////</span>
@@ -236,69 +236,62 @@
 
     <div class="step" data-x="0" data-y="200">
         <h1>Sprites</h1>
-        <pre>
-            <code class="ruby">
-                # put an image in data/graphics/starfield.png
-                # src/actors/starfield.rb
-                define_actor :starfield do
-                  has_behaviors do
-                    graphical scale: 5
-                    positioned
-                    layered
-                  end
-                end
+        <pre><code class="ruby">
+# put an image in data/graphics/starfield.png
+# src/actors/starfield.rb
+define_actor :starfield do
+  has_behaviors do
+    graphical scale: 5
+    positioned
+    layered
+  end
+end
 
-                # src/stages/walk.rb
-                define_stage :walk do
-                  requires :behavior_factory
-                  curtain_up do |*args|
-                    night_sky = create_actor :starfield, x:427, y:240, layer: 0
-                    # ...
-            </code>
-        </pre>
+# src/stages/walk.rb
+define_stage :walk do
+  requires :behavior_factory
+  curtain_up do |*args|
+    night_sky = create_actor :starfield, x:427, y:240, layer:0
+    # ...
+        </code></pre>
     </div>
 
 
     <div class="step" data-x="1200" data-y="200">
         <h1>Sprite Sheets</h1>
-        <pre>
-            <code class="ruby">
-                # src/actors/bedroot_cat.rb
-                define_actor :bedroom_cat do
+        <pre><code class="ruby">
+# src/actors/bedroot_cat.rb
+define_actor :bedroom_cat do
 
-                  has_behaviors do
-                    animated frame_update_time: 400, once: false
-                    graphical scale: 5
-                    positioned
-                    layered
-                  end
+  has_behaviors do
+    animated frame_update_time: 400, once: false
+    graphical scale: 5
+    positioned
+    layered
+  end
 
-                end
-            </code>
-        </pre>
+end
+            </code></pre>
     </div>
 
     <div class="step" data-x="2400" data-y="200">
         <h1>Stages</h1>
 
-        <pre>
-            <code class="ruby">
-                # config/environment.rb
-                Gamebox.configure do |config|
-                  # ...
-                  config.stages = [:intro, :work, :walk, :house, :bedroom_sitting, :dream]
-                  config.game_name = "Dream"
-                end
-            </code>
-        </pre>
+        <pre><code class="ruby">
+# config/environment.rb
+Gamebox.configure do |config|
+  # ...
+  config.stages = [:intro, :work, :walk, :house, :bedroom_sitting, :dream]
+  config.game_name = "Dream"
+end
+            </code></pre>
     </div>
 
     <div class="step" data-x="3600" data-y="200">
         <h1>Tweens</h1>
         <pre><code class="ruby">
-          tween_manager.tween_properties face,
-            { x:face.x + 5, y:face.y },
-            fall_asleep_t, Tween::Quad::InOut
+tween_manager.tween_properties face, { x:face.x + 5, y:face.y },
+  fall_asleep_t, Tween::Quad::InOut
         </code></pre>
     </div>
 
@@ -306,26 +299,26 @@
         <h1>Timers</h1>
 
         <pre><code class="ruby">
-            timer_manager.add_timer 'fall_asleep', fall_asleep_t do
-              timer_manager.remove_timer 'fall_asleep'
-              tween_manager.tween_properties face,
-                {x: face.x + 5, y:face.y},
-                fall_asleep_t, Tween::Quad::InOut
+timer_manager.add_timer 'fall_asleep', fall_asleep_t do
+  timer_manager.remove_timer 'fall_asleep'
+  tween_manager.tween_properties face,
+    {x: face.x + 5, y:face.y},
+    fall_asleep_t, Tween::Quad::InOut
 
-              behavior_factory.add_behavior face, :fading
-              face.emit :fade_out, fall_asleep_t
+  behavior_factory.add_behavior face, :fading
+  face.emit :fade_out, fall_asleep_t
 
-              timer_manager.add_timer 'face_fade', fall_asleep_t do
-                timer_manager.remove_timer 'face_fade'
-                asleep_face.emit :fade_out, fall_asleep_t
-              end
+  timer_manager.add_timer 'face_fade', fall_asleep_t do
+    timer_manager.remove_timer 'face_fade'
+    asleep_face.emit :fade_out, fall_asleep_t
+  end
 
-              # I want to take his face ... off
-              timer_manager.add_timer 'face_off', fall_asleep_t * 2 do
-                timer_manager.remove_timer 'face_off'
-                asleep_face.remove
-              end
-            end
+  # I want to take his face ... off
+  timer_manager.add_timer 'face_off', fall_asleep_t * 2 do
+    timer_manager.remove_timer 'face_off'
+    asleep_face.remove
+  end
+end
         </code></pre>
     </div>
 
