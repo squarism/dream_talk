@@ -103,15 +103,16 @@
     </div>
 
     <div class="step" data-x="-19500" data-y="-180" data-z="-200" data-scale="0.5">
-        <h1 class="title">Inversion of Content</h1>
+        <h1 class="title">Inversion of Control</h1>
         <ol class="bullets-forever">
+            <li>Lego</li>
             <li>Minecraft</li>
             <li>Kerbal Space Program</li>
             <li>Vimeo, Soundcloud, Etsy</li>
-            <li>Libraries</li>
+            <li>Libraries and Gems</li>
             <li>3D Printers</li>
             <li>Customizations and Presets</li>
-            <li>Mods, Maps and Makers
+            <li>Mods, Maps and Makers</li>
         </ol>
     </div>
 
@@ -148,6 +149,13 @@
         <p class="aside">End of History Illusion</p>
     </div>
 
+    <div class="step" data-x="-19570" data-y="400" data-scale="0.15">
+        <p>Point is:</p>
+        <p class="notes">Experience not repeated.<br>
+        Tools change but general patterns are forever.</p>
+    </div>
+
+
     <div class="step" data-x="-18500" data-y="280">
         <table class="progress-table">
             <tr>
@@ -162,14 +170,8 @@
         </table>
     </div>
 
-    <div class="step" data-x="-18500" data-y="840" data-z="-400">
-        <p>Point is:</p>
-        <p class="notes">Experience not repeated.<br>
-        Tools change but general patterns are forever.</p>
-    </div>
-
     <div class="step" data-x="-18000" data-y="540" data-z="400" data-scale="2">
-        Ruby ... high level ... domains
+        Rapid means you experience more domains
     </div>
 
     <div class="step" data-x="-17500" data-y="200">
@@ -221,7 +223,65 @@
     </div>
 
     <div class="step" data-x="-4000" data-y="200" data-scale="3">
-        <p class="title">Breakdown</p>
+        <p class="title">Project Start and Breakdown</p>
+    </div>
+
+    <div class="step" data-x="0" data-y="-6000" data-scale="3">
+        <pre><code class="html">
+# os deps from gosu wiki (mac example)
+$ brew install sdl2 libogg libvorbis
+
+$ gem install gamebox
+Fetching: gamebox-0.5.5.gem (100%)
+Successfully installed gamebox-0.5.5
+1 gem installed
+        </code>
+        </pre>
+    </div>
+
+    <div class="step" data-x="3000" data-y="-6000" data-scale="3">
+        <pre><code class="html">
+gamebox new polka_justice_league
+      create  Gemfile
+      create  Rakefile
+      create  config/boot.rb
+      create  data/graphics/GRAPHICS_GO_HERE
+      create  data/music/MUSIC_GOES_HERE
+      create  spec/helper.rb
+      create  src/actors/player_actor.rb
+      create  src/app.rb
+      ...
+        </code>
+        </pre>
+    </div>
+
+    <div class="step" data-x="6000" data-y="-6000" data-scale="2">
+        <pre><code class="html">
+polka_justice_league $ tree -L 2 -F
+.
+├── Gemfile
+├── Gemfile.lock
+├── README.md
+├── Rakefile
+├── config/
+│   ├── boot.rb
+│   ├── environment.rb
+│   └── game.yml
+├── data/
+│   ├── fonts/
+│   ├── graphics/
+│   ├── music/
+│   └── sounds/
+├── spec/
+│   └── helper.rb
+└── src/
+    ├── actors/
+    ├── app.rb
+    ├── behaviors/
+    ├── stages/
+    └── views/
+        </code>
+        </pre>
     </div>
 
     <div class="step" data-x="-2000" data-y="200" data-scale="3">
